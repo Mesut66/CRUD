@@ -1,0 +1,43 @@
+﻿@model SchoolViewModel
+@{
+    ViewData["Title"] = "SchoolDetails";
+}
+<div class="text-center">
+    <h2><b>@Model.SchoolName</b> nin öğretmenleri</h2>
+</div>
+<hr />
+
+@if (Model.Teachers.Count() == 0)
+{
+<h2 class="alert-info">
+    Bu okulda öğretmen yok.
+</h2>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <th>Adı Soyadı</th>
+        <th>Okul Adı</th>
+        <th>Yaşı</th>
+        <th>Deneyim</th>
+        <th>Telefon Numarası</th>
+        <th>Konu</th>
+        </thead>
+        <tbody>
+        @foreach (Teacher dfk in Model.Teachers)
+        {
+            <tr>
+                <td>@dfk.FullName</td>
+                <td>@dfk.School.Name</td>
+                <td>@dfk.Age</td>
+                <td>@dfk.YearsOfExperience</td>
+                <td>@dfk.PhoneNumber</td>
+                <td>@dfk.Subject</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    @Html.ActionLink("Geri", "All", "School", null, new { @class = "btn btn-default" })
+}

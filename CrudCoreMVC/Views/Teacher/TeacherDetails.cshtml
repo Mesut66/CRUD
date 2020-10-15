@@ -1,0 +1,44 @@
+﻿@model TeacherViewModel
+@{
+    ViewData["Title"] = "TeacherDetails";
+}
+<div class="text-center">
+    <h2><b>@Model.TeacherName</b> ın öğrencileri</h2>
+</div>
+<hr />
+@if (Model.Students.Count() == 0)
+{
+<h2 class="alert-info">
+    Bu öğretmenin öğrencisi yok.
+</h2>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <th>Tam Adı</th>
+        <th>Adı</th>
+        <th>Mail Adresi</th>
+        <th>Yaş</th>
+        <th>Doğum Yılı</th>
+        <th>Not Ortalaması</th>
+        <th>Öğretmen Adı</th>
+        </thead>
+        <tbody>
+            @foreach (Student student in Model.Students)
+            {
+                <tr>
+                    <td>@student.FullName</td>
+                    <td>@student.MiddleName</td>
+                    <td>@student.EmailAddress</td>
+                    <td>@student.Age</td>
+                    <td>@student.Birthday.ToString("yyyy-MM-dd")</td>
+                    <td>@student.GPA</td>
+                    <td>@student.Teacher.FullName</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+    @Html.ActionLink("Geri", "AllTeachers", "Teacher", null, new { @class = "btn btn-default" })
+}

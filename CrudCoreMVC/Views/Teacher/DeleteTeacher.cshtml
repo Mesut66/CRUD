@@ -1,0 +1,10 @@
+﻿@model TeacherViewModel
+
+
+<div class="text-center">
+    <h2 class="text-danger">Öğretmeni silmek üzeresin @Model.FullName</h2>
+    <h3>Emin misin?</h3>
+</div>
+@Html.ActionLink("Geri", "AllTeachers", "Teacher", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Sil", "TeacherDeleted", "Teacher", new { @id = Model.Id }, new { @class="btn btn-danger" })
+

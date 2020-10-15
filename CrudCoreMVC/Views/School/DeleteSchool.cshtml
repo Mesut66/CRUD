@@ -1,0 +1,11 @@
+﻿@model SchoolViewModel
+@{
+    ViewData["Title"] = "DeleteSchool";
+}
+<div class="text-center">
+    <h2 class="text-danger">Okulu silmek üzeresin! @Model.SchoolName</h2>
+    <h3>Emin misin?</h3>
+</div>
+@Html.ActionLink("Geri", "All", "School", null, new { @class = "btn btn-default" })
+@Html.ActionLink("Sil", "SchoolDeleted", "School",new { @id = Model.Id }, new { @class = "btn btn-danger" })
+
